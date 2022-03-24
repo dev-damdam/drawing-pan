@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+    <canvas-view />
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import CanvasView from "@/views/canvas-view.vue";
+
+@Component({
+  components: {
+    CanvasView,
+  },
+})
+export default class App extends Vue {}
+</script>
 
 <style>
 #app {

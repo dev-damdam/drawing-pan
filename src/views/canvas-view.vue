@@ -1,20 +1,35 @@
 <template>
   <div class="canvas">
-    <editor-tools />
-    <drawing-canvas />
+    <editor-tools v-model="toolName" />
+    <drawing-canvas v-model="toolName" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import vue from "vue";
 import DrawingCanvas from "@/modules/drawing/drawing-canvas.vue";
 import EditorTools from "@/modules/drawing/editor-tools.vue";
 
-@Component({
+export default vue.extend({
   components: {
     DrawingCanvas,
     EditorTools,
   },
-})
-export default class CanvasView extends Vue {}
+  data() {
+    return {
+      toolName: "", // set default tool
+    };
+  },
+  methods: {},
+  computed: {
+    selectedTool: {
+      set(val: string) {
+        this.toolName = val;
+      },
+      get(): string {
+        return this.toolName;
+      },
+    },
+  },
+});
 </script>

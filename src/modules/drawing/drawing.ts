@@ -34,6 +34,14 @@ class drawing {
       console.log(e);
     });
   }
+
+  public changePencilColor(_canvas: fabric.Canvas, color: string) {
+    _canvas.freeDrawingBrush.color = color;
+  }
+
+  public changeHighlightColor(_canvas: fabric.Canvas, color: string) {
+    //todo
+  }
 }
 
 export { drawing };

@@ -1,7 +1,7 @@
 <template>
   <div class="canvas">
-    <editor-tools v-model="toolName" />
-    <drawing-canvas v-model="toolName" />
+    <editor-tools v-model="toolInfo" />
+    <drawing-canvas v-model="toolInfo" />
   </div>
 </template>
 
@@ -9,7 +9,9 @@
 import vue from "vue";
 import DrawingCanvas from "@/modules/drawing/drawing-canvas.vue";
 import EditorTools from "@/modules/drawing/editor-tools.vue";
-
+interface IObject {
+  [key: string]: any;
+}
 export default vue.extend({
   components: {
     DrawingCanvas,
@@ -17,17 +19,17 @@ export default vue.extend({
   },
   data() {
     return {
-      toolName: "", // set default tool
+      toolInfo: {}, // set default tool
     };
   },
   methods: {},
   computed: {
     selectedTool: {
-      set(val: string) {
-        this.toolName = val;
+      set(val: IObject) {
+        this.toolInfo = val;
       },
-      get(): string {
-        return this.toolName;
+      get(): IObject {
+        return this.toolInfo;
       },
     },
   },
